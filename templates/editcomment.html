@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>/edit comment/</h2>
+    <form method="post" action="/edit_comment/{{ comment_id }}">
+        <label>
+            <div>Entry</div>
+            <textarea name="body">{{ body }}</textarea>
+        </label>
+
+        <div class="error">{{ error }}</div>
+        <input type="submit">
+    </form>
+        <form method="post" action="/cancel_comment/{{ comment_id }}">
+        <input type="submit" name="cancel" value="Cancel">
+    </form>
+        <hr>
+{% endblock %}

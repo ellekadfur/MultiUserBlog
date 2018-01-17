@@ -1,0 +1,43 @@
+{% extends "intro_base.html" %}
+
+{% block content %}
+        <h2>Login</h2>
+        <form method="post">
+            <table>
+
+                <tr>
+                    <td class="label">
+                        Username
+                    </td>
+                    <td>
+                        {% if dictionary_values %}
+                        {% if dictionary_values.valid_username %}
+                        <input type="text" name="username" value="{{ dictionary_values.valid_username }}">
+                        {% else %}
+                        <input type="text" name="username" value="">
+                        {% endif %}
+                        {% else %}
+                        <input type="text" name="username" value="">
+                        {% endif %}
+                            </td>
+                </tr>
+
+            <tr>
+                    <td class="label">
+                        Password
+                    </td>
+                    <td>
+                        <input type="password" name="password" value="">
+                            </td>
+
+                </tr>
+                    <tr class="error">
+                        {% if dictionary_values %}
+                        {{ dictionary_values.error}}
+                        {% endif %}
+                    </tr>
+            </table>
+
+            <input type="submit">
+                </form>
+{% endblock %}

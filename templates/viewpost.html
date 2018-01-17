@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>/view/</h2>
+    <hr>
+    {% if blog %}
+    <div>{{blog.title}}</div>
+    <pre>{{blog.body}}</pre>
+    {% if user %}
+              {% if user.username == blog.username %}
+    <form action="/edit_post/{{ blog.key().id() }}" style="float: left;">
+        <input type="submit" name="edit_post" value="Edit">
+    </form>
+        <form method="post" action="/delete_post/{{ blog.key().id() }}" style="float: left;">
+        <input type="submit" name="delete_post" value="Delete">
+    </form>
+       {% endif %}
+          {% endif %}
+     {% if user %}
+              {% if user.username != blog.username %}
+        <form method="post" action="/like_post/{{ blog.key().id() }}" style="float: left;">
+
+                     {% if user.username in blog.likes_by_users %}
+        <input type="submit" name="like_post" value="Unlike">
+        {% else %}
+        <input type="submit" name="like_post" value="Like">
+                    {% endif  %}
+                        </form>
+    <form action="/new_comment/{{ blog.key().id() }}">
+        <input type="submit" name="new_comment" value="Comment">
+    </form>
+       {% endif %}
+          {% endif %}
+          <br>
+
+<hr>
+    {% for comment in comments %}
+    {% if comment.blog_id == blog.key().id() %}
+    <div style="margin: 0 auto;">
+    <pre style="margin-left: 50px">{{comment.body}}</pre>
+
+     {% if user %}
+              {% if user.username == comment.username %}
+
+    <form style="margin-left: 50px; float:left;" action="/edit_comment/{{ comment.key().id() }}/{{blog.key().id()}}" style="">
+        <input type="submit" name="edit_comment" value="Edit">
+    </form>
+        <form method="post" action="/delete_comment/{{ comment.key().id() }}" >
+        <input type="submit" name="delete_comment" value="Delete">
+    </form>
+         {% endif %}
+     {% endif %}
+
+
+    <hr>
+         {% endif  %}
+{% endfor %}
+
+    {% endif %}
+{% endblock %}

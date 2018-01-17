@@ -1,0 +1,51 @@
+{% extends "intro_base.html" %}
+
+{% block content %}
+        <h2>/signup/</h2>
+        <form method="post" action="/signup">
+
+  Username : <br>
+   {% if dictionary_values %}
+                        {% if dictionary_values.valid_username %}
+  <input type="text" name="username" value="{{dictionary_values.valid_username}}"><br>
+  <div class="error">{{dictionary_values.error_username}}</div>
+   {% else %}
+                        <input type="text" name="username" value="">
+                        {% endif %}
+                        {% else %}
+                        <input type="text" name="username" value="">
+                        {% endif %}
+<br>
+  Password : <br>
+  <input type="password" name="password" value=""><br>
+  <div class="error">{% if dictionary_values %}
+                        {{ dictionary_values.error_password }}
+                        {% endif %}</div>
+
+  Verify Password : <br>
+  <input type="password" name="verify" value=""><br>
+  <div class="error">    {% if dictionary_values %}
+                        {{ dictionary_values.error_verify }}
+                        {% endif %}</div>
+
+  Email (optional) : <br>
+           {% if dictionary_values %}
+                        {% if dictionary_values.valid_email %}
+  <input type="text" name="email" value="{{dictionary_values.valid_email}}"><br>
+  <div class="error">{{dictionary_values.error_email}}</div>
+   {% else %}
+                            <input type="text" name="email" value="">
+                            {% endif %}
+                            {% else %}
+                            <input type="text" name="email" value="">
+                            {% endif %}
+  <br/>
+            <input type="submit" name="signup" value="Sign Up">
+</form>
+
+    <form action="/login" >
+        <input type="submit" name="login" value="Login">
+    </form>
+{% endblock %}
+
+

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Lamar's Blog</title>
+        <style type="text/css">
+            .label {text-align: right}
+            .error {color: red}
+            </style>
+</head>
+<body style="margin:0">
+    <h1 style="background-color: #ddd; color: #888; margin: 0 height: 50px">
+        Blogs Site
+        </h1>
+
+    {% block content %}
+    {% endblock %}
+
+    <div style="">
+    <form method="post" action="/logout">
+        <input type="submit" name="logout" value="Logout">
+    </form>
+        <form action="/welcome">
+        <input type="submit" name="home" value="Home">
+    </form>
+        </div>
+</body>
+</html>

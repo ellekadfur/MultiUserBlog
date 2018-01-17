@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>/edit post/</h2>
+    <form method="post" action="/edit_post/{{ post_id }}">
+        <label>
+            <div>Title</div>
+            <input type="text" name="title" value="{{ title }}">
+        </label>
+        <label>
+            <div>Entry</div>
+            <textarea name="body">{{ body }}</textarea>
+        </label>
+
+        <div class="error">{{ error }}</div>
+        <input type="submit">
+    </form>
+     </form>
+        <form method="post" action="/cancel_post/{{ post_id }}">
+        <input type="submit" name="canel" value="Cancel">
+    </form>
+        <hr>
+{% endblock %}

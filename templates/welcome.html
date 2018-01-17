@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>/welcome {{user_id}}/</h2>
+ <hr>
+    <div style="">
+    <form action="/new_post" style="float: left;">
+        <input type="submit" name="new_post" value="New Post">
+    </form>
+    <form action="/blogs" style="">
+        <input type="submit" name="blogs" value="View Blogs">
+    </form>
+        </div>
+
+{% endblock %}

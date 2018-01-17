@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>/view comment/</h2>
+    <hr>
+    {% if comment %}
+    <pre>{{ comment.body }}</pre>
+    <form action="/edit_comment/{{ comment.key().id() }}" style="float: left;">
+        <input type="submit" name="edit_comment" value="Edit">
+    </form>
+        <form method="post" action="/delete_comment/{{ comment.key().id() }}">
+        <input type="submit" name="delete_comment" value="Delete">
+    </form>
+    <div class="error">
+                        {{ error }}
+        </div>
+        <hr>
+    {% endif %}
+{% endblock %}
